@@ -1,0 +1,30 @@
+name: retake_flutter
+description: A new Flutter application.
+publish_to: 'none'
+version: 1.0.0+1
+environment:
+  sdk: ">=2.7.0 <3.0.0"
+
+dependencies:
+  flutter:
+    sdk: flutter
+  cupertino_icons: ^1.0.0
+  http: 0.12.2
+  audioplayers: ^0.15.1
+  video_player: ^0.10.11+2
+  intl: ^0.15.0
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+
+flutter:
+  uses-material-design: true
+  assets:
+    - assets/images/FlutterBG.jpg
+    - assets/images/FlagUS.jpg
+    - assets/video/TimeZonesVid.mp4
+  fonts:
+    - family: ViaodaLibre
+      fonts:
+        - asset: assets/fonts/ViaodaLibre-Regular.ttf
