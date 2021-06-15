@@ -3,11 +3,11 @@ import 'package:flutter/material.dart';
 import 'package:video_player/video_player.dart';
 
 class HomePage extends StatelessWidget {
-  VideoPlayerController videoController = VideoPlayerController.asset("assets/video/TimeZonesVid.mp4");
+  //VideoPlayerController videoController = VideoPlayerController.asset("assets/video/TimeZonesVidShort.mp4");
 
   Widget build(BuildContext context) {
-    videoController.initialize();
-    videoController.play();
+    //videoController.initialize();
+    //videoController.play();
 
     return Scaffold(
       body: Center(
@@ -46,11 +46,13 @@ class VideoTree extends StatefulWidget{
 }
 
 class _AppTreeState extends State<VideoTree> {
-  VideoPlayerController videoController = VideoPlayerController.asset("assets/video/TimeZoneVid.mp4");
+  VideoPlayerController videoController = VideoPlayerController.asset("assets/video/TimeZonesVidShort.mp4");
 
   void initState() {
-    videoController.setLooping(true);
     videoController.initialize();
+    videoController.play();
+    videoController.setLooping(true);
+    //videoController.initialize();
     super.initState();
   }
 
@@ -63,12 +65,25 @@ class _AppTreeState extends State<VideoTree> {
   Widget build(BuildContext context) {
     bool isVisible = true;
 
+    /*return Container(
+        child: VideoPlayer(videoController)
+    );*/
     return ListView(
         children: <Widget>[
-          AspectRatio(
+          /*Container(
+              height: 360,
+              child: AspectRatio(
+                  aspectRatio: 640 / 360,
+                  child: VideoPlayer(videoController)
+              ),
+          )*/
+          Container(
+            height: 360,
+            child: VideoPlayer(videoController)
+          )          /*AspectRatio(
               aspectRatio: 640 / 360,
               child: VideoPlayer(videoController)
-          ),
+          ),*/
         ]
     );
   }
