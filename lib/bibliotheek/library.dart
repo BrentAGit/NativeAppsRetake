@@ -38,3 +38,5 @@ class QueryData {
   final String urlDomain = 'http://api.timezonedb.com/v2.1/list-time-zone?key=EXKA1Y1NLDPF&format=json&country=US';
 }
 QueryData queryData = new QueryData();
+
+var favoriteList = new List();

@@ -61,14 +61,16 @@ class _AppTreeState extends State<VideoTree> {
   }
 
   Widget build(BuildContext context) {
-    bool isVisible = true;
 
     return ListView(
         children: <Widget>[
-          AspectRatio(
-              aspectRatio: 640 / 360,
-              child: VideoPlayer(videoController)
-          ),
+          Container(
+            height: 360,
+            child: AspectRatio(
+                aspectRatio: 640 / 360,
+                child: VideoPlayer(videoController)
+            ),
+          )
         ]
     );
   }
