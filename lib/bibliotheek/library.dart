@@ -11,9 +11,14 @@ class Service {
   }
 
   Future<List<Location>> fetchAllLocations() async {
-    String url = 'http://api.timezonedb.com/v2.1/list-time-zone?key=EXKA1Y1NLDPF&format=json&country=US';
+    String url = 'http://api.timezonedb.com/v2.1/list-time-zone?key=EXKA1Y1NLDPF&format=json';
     if (queryData.searchName != null && queryData.searchName != ""){
       String extra = "&zone=*" +  queryData.searchName + "*";
+      url += extra;
+    }
+
+    if (queryData.continentName != null && queryData.continentName != ""){
+      String extra = "&zone=*" +  queryData.continentName + "*";
       url += extra;
     }
 
@@ -35,8 +40,8 @@ class Service {
 
 class QueryData {
   String searchName = "";
-  final String urlDomain = 'http://api.timezonedb.com/v2.1/list-time-zone?key=EXKA1Y1NLDPF&format=json&country=US';
+  String continentName = "";
+  final String urlDomain = 'http://api.timezonedb.com/v2.1/list-time-zone?key=EXKA1Y1NLDPF&format=json';
 }
 QueryData queryData = new QueryData();
-
 var favoriteList = new List();

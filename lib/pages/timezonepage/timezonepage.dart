@@ -13,6 +13,7 @@ class TimeZonePageState extends State<TimeZonePage> {
   final Service service = Service();
   final formKey = GlobalKey<FormState>();
   String name = "";
+  String flagURL = "";
 
   Future<void> showDialogInfo(BuildContext context) async {
     return await showDialog(
@@ -66,14 +67,83 @@ class TimeZonePageState extends State<TimeZonePage> {
     return Scaffold(
       appBar: AppBar(
         backgroundColor: Colors.blue,
-        title: ElevatedButton(
-          child: Icon(Icons.search),
-          onPressed: () async {
-            await showDialogInfo(context);
-          },
-          style: ButtonStyle(backgroundColor: MaterialStateProperty.all(Colors.indigoAccent)),
-        )
       ),
+        drawer: Drawer(
+          child: ListView(
+            padding: EdgeInsets.zero,
+            children: <Widget>[
+              DrawerHeader(
+                decoration: BoxDecoration(
+                  color: Colors.blue,
+                ),
+                child: Center(
+                  child: Text(
+                    'Filter',
+                    style: TextStyle(
+                        color: Colors.white, fontWeight: FontWeight.bold, fontSize: 30
+                    ),
+                  ),
+                ),
+              ),
+              ListTile(
+                  title:  ElevatedButton(
+                    child: Text("Search by name"),
+                    onPressed: () async {
+                      showDialogInfo(context);
+                    },
+                    style: ButtonStyle(backgroundColor: MaterialStateProperty.all(Colors.indigoAccent)),
+                  )
+              ),
+              ListTile(
+                  title:  ElevatedButton(
+                    child: Text("EU Countries Only"),
+                    onPressed: () {
+                      setState(() {
+                        queryData.continentName = "Europe";
+                        print(queryData.continentName);
+                      });
+                    },
+                    style: ButtonStyle(backgroundColor: MaterialStateProperty.all(Colors.indigoAccent)),
+                  )
+              ),
+              ListTile(
+                  title:  ElevatedButton(
+                    child: Text("US Countries Only"),
+                    onPressed: () {
+                      setState(() {
+                        queryData.continentName = "America";
+                        print(queryData.continentName);
+                      });
+                    },
+                    style: ButtonStyle(backgroundColor: MaterialStateProperty.all(Colors.indigoAccent)),
+                  )
+              ),
+              ListTile(
+                  title:  ElevatedButton(
+                    child: Text("Asian Countries Only"),
+                    onPressed: () {
+                      setState(() {
+                        queryData.continentName = "Asia";
+                        print(queryData.continentName);
+                      });
+                    },
+                    style: ButtonStyle(backgroundColor: MaterialStateProperty.all(Colors.indigoAccent)),
+                  )
+              ),
+              ListTile(
+                  title:  ElevatedButton(
+                    child: Text("Reset Filters"),
+                    onPressed: () {
+                      setState(() {
+                        queryData.continentName = "";
+                      });
+                    },
+                    style: ButtonStyle(backgroundColor: MaterialStateProperty.all(Colors.indigoAccent)),
+                  )
+              ),
+            ],
+          ),
+        ),
       body: FutureBuilder(
         future: service.fetchAllLocations(),
         builder: (BuildContext context,
@@ -88,7 +158,7 @@ class TimeZonePageState extends State<TimeZonePage> {
                     ListTile(
                       leading: Container(
                         padding: const EdgeInsets.only(top: 5),
-                        child: Image.asset('assets/images/FlagUS.jpg',
+                        child: Image.asset(f.zoneName.contains("America") ? 'assets/images/FlagUS.jpg' : 'assets/images/FlagEU.png',
                           width: 50,
                           height: 30,
                           fit: BoxFit.cover,

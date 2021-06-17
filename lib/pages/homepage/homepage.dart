@@ -1,14 +1,10 @@
 import 'package:flutter/material.dart';
 
-import 'package:video_player/video_player.dart';
+//import 'package:video_player/video_player.dart';
 
 class HomePage extends StatelessWidget {
-  VideoPlayerController videoController = VideoPlayerController.asset("assets/video/TimeZonesVid.mp4");
 
   Widget build(BuildContext context) {
-    videoController.initialize();
-    videoController.play();
-
     return Scaffold(
       body: Center(
         child: Stack(
@@ -32,7 +28,7 @@ class HomePage extends StatelessWidget {
             ),
             Container(
               padding: const EdgeInsets.only(top:400),
-              child: VideoTree()
+              //child: VideoTree()
             )
           ],
         ),
@@ -41,7 +37,7 @@ class HomePage extends StatelessWidget {
   }
 }
 
-class VideoTree extends StatefulWidget{
+/*class VideoTree extends StatefulWidget{
   _AppTreeState createState() => _AppTreeState();
 }
 
@@ -65,13 +61,10 @@ class _AppTreeState extends State<VideoTree> {
     return ListView(
         children: <Widget>[
           Container(
-            height: 360,
-            child: AspectRatio(
-                aspectRatio: 640 / 360,
-                child: VideoPlayer(videoController)
-            ),
+              height: 360,
+              child: VideoPlayer(videoController)
           )
         ]
     );
   }
-}
+}*/

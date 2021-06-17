@@ -25,6 +25,7 @@ flutter:
     - assets/images/FlagUS.jpg
     - assets/video/TimeZonesVid.mp4
     - assets/audio/favorite.mp3
+    - assets/images/FlagEU.png
   fonts:
     - family: ViaodaLibre
       fonts:
